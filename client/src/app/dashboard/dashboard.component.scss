@@ -1,0 +1,48 @@
+.column {
+    float: left;
+  }
+  
+  .capacity {
+    width: 20%;
+  }
+  
+  .files {
+    width: 68%//77%;
+  }
+
+  .gpu {
+ width: 16%;//23%;
+  }
+
+  .cpuRam {
+width: 45%;//80%;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .icon {
+      width: 20px;
+      height: 20px;
+  }
+  .card {
+    margin: 4px;
+  }
+
+  .title{
+    font-family: "Open Sans", verdana, arial, sans-serif;
+    font-size: 17px;
+    fill: rgb(68, 68, 68);
+    opacity: 1;
+    font-weight: normal;
+    white-space: pre;
+    text-align: center;
+  }
+
+
+
+
