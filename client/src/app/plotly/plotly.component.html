@@ -7,11 +7,15 @@
 	</head>
 
     <body>
-    <mat-card class="graphCard">
+    <!-- <mat-card class="graphCard">
             <div id="chart"></div>            
-    </mat-card>
+    </mat-card> -->
     <mat-card  class="graphCard">
-        <div id='myDiv2'><!-- Plotly chart will be drawn inside this DIV --></div>
+            <mat-slide-toggle (change)="changed($event)">Slide me!</mat-slide-toggle>
+            <div id='myDiv3'></div>
+        </mat-card>
+    <mat-card  class="graphCard">
+        <div id='myDiv2'></div>
     </mat-card>
     </body>
 </html>
