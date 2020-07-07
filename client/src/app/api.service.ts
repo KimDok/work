@@ -3,6 +3,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, tap, map } from 'rxjs/operators';
 import { Sales } from './sales';
+import { DataObject } from './dataObject';
 import { Chart } from './chart';
 
 const httpOptions = {
@@ -29,6 +30,14 @@ export class ApiService {
       .pipe(
         tap(sales => console.log('fetched sales')),
         catchError(this.handleError('getSales', []))
+      );
+  }
+
+  getDataObject(): Observable<DataObject[]> {
+    return this.http.get<DataObject[]>(`${apiUrl}`)
+      .pipe(
+        tap(dataObject => console.log('fetched dataObject')),
+        catchError(this.handleError('getDataObjects', []))
       );
   }
 

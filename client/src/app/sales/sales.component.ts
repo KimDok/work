@@ -56,9 +56,10 @@ export class SalesComponent implements OnInit {
   }
 
   getSales() {
-    this.api.getSales()
+    this.api.getDataObject()
     .subscribe((res: any) => {
       this.data = res;
+      debugger
       console.log(this.data);
       this.isLoadingResults = false;
     }, err => {

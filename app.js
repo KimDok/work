@@ -15,6 +15,7 @@ mongoose.connect('mongodb://localhost/sales-report', {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var salesRouter = require('./routes/sales');
+var dataObjectRouter = require('./routes/dataObject');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api', salesRouter);
+//.use('/api', salesRouter);
+app.use('/api', dataObjectRouter);
 
 module.exports = app;
