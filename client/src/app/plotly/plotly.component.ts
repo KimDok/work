@@ -19,24 +19,24 @@ export class PlotlyComponent implements OnInit {
 
   ngOnInit(): void {
    
-    var myDiv2: any = document.getElementById("myDiv2");
-    var chart: any = document.getElementById("chart");
+    var heatmapVisual: any = document.getElementById("heatmapVisual");
+    var scatterVisual: any = document.getElementById("scatterVisual");
 
     // Create visuals
     this.api.getSales()
     .subscribe((res: any) => {
       this.sales = res;
-      this.createPlot('myDiv2',this.getData1());
+      this.createHeatmapVisual()
+      this.createScatterVisual('scatterVisual',this.getData1());
       // this.createRealTimePlot(
       //   this.sales.map(sale => +sale.itemId))
-        chart.on("plotly_relayout", function(eventData) {
+      heatmapVisual.on("plotly_relayout", function(eventData) {
           console.log(eventData);
-          Plotly.relayout("myDiv2", eventData);
+          Plotly.relayout("scatterVisual", eventData);
         });
     }, err => {
       console.log(err);
     });
-    this.heatmapVisual()
    
   }
 
@@ -63,7 +63,7 @@ export class PlotlyComponent implements OnInit {
     return [trace1, trace2, trace3];
   }
 
-  createPlot(div:string, data) {
+  createScatterVisual(div:string, data) {
     var layout = {
       margin: { t: 30, l: 30, r: 0, b: 25 },
       height: 250      
@@ -170,7 +170,7 @@ export class PlotlyComponent implements OnInit {
 
   }
 
-  heatmapVisual() {
+  createHeatmapVisual() {
     var values = []
       for(var i=0; i<186;i=i+14) {
         values[i] = this.createrow()
@@ -264,7 +264,7 @@ export class PlotlyComponent implements OnInit {
         }
       };
 
-    Plotly.newPlot('myDiv3', data, layout);
+    Plotly.newPlot('heatmapVisual', data, layout);
   }
 
   heatmapVisual2() {
@@ -361,11 +361,11 @@ export class PlotlyComponent implements OnInit {
         }
       };
 
-    Plotly.newPlot('myDiv3', data, layout);
+    Plotly.newPlot('heatmapVisual', data, layout);
   }
 
 
-  changed(value) {
+  selectObjects(value) {
     
     // show without noise
     if(value.checked) {
@@ -394,7 +394,7 @@ export class PlotlyComponent implements OnInit {
     //   Plotly.restyle('myDiv3', data )
      }
      else {
-       this.heatmapVisual()
+       this.createHeatmapVisual()
      }
     console.log('toggle ' + value.checked)
   }
