@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as Plotly from '../../../node_modules/plotly.js-dist/plotly.js';
 import { ApiService } from '../api.service';
 import { Sales } from '../sales';
+import {FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-plotly',
@@ -11,11 +12,22 @@ import { Sales } from '../sales';
 
 export class PlotlyComponent implements OnInit {
 
+  campaignOne: FormGroup;
+
   sales: Sales[] = [];
   data: any[] = [];
   intervalId: any;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService) { 
+    const today = new Date();
+    const month = today.getMonth();
+    const year = today.getFullYear();
+
+    this.campaignOne = new FormGroup({
+      start: new FormControl(new Date(year, month, 13)),
+      end: new FormControl(new Date(year, month, 16))
+    });
+  }
 
   ngOnInit(): void {
    

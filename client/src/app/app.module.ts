@@ -23,6 +23,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core'
 
 import { ChartsModule } from 'ng2-charts';
 import { PlotlyComponent } from './plotly/plotly.component';
@@ -60,7 +62,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatFormFieldModule,
     ChartsModule,
     MatTabsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
